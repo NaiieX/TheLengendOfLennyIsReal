@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var prefix = "!";
-client.login("**************");
+client.login("a");
 
 
 
@@ -9,6 +9,10 @@ client.on("ready", () => {
    console.log("Prêt...");
    client.user.setActivity("!help");
 });
+
+client.on ("message", message => {
+    if(message.content === "ping"){
+        message.reply("**pong**");
 
     }
     if(message.content === prefix + "help"){
@@ -35,7 +39,7 @@ client.on("ready", () => {
         case "myinfo":
 
         randomiq();
-    
+
         var userCreationDate = message.author.createdAt.toString().split(" ");
         var msgauthorid = message.author.id;
         var stats_embed = new Discord.RichEmbed()
@@ -50,7 +54,7 @@ client.on("ready", () => {
         break;
     }
     if (message.content.startsWith(prefix + "clear")) {
-        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.channel.send("**Tu n'as pas la permission de supprimer les messages. (☭ ͜ʖ ☭)**");    
+        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.channel.send("**Tu n'as pas la permission de supprimer les messages. (☭ ͜ʖ ☭)**");
         let args = message.content.split(" ").slice(1);
         if(!args[0]) return message.channel.send("**Précise le nombre de messages a supprimer! ( ͡o ͜ʖ ͡o)**")
         message.channel.bulkDelete(args[0]).then(() => {
@@ -90,10 +94,10 @@ client.on("ready", () => {
         }
         ban.ban().then(member => {
             message.channel.send(`**:boom: ${member.user.username} a été banni par ${message.author.username}. ( ͡◉ ͜ʖ ͡◉)**`)
-        
-        });  
+
+        });
     }
-    
+
     if(message.content === prefix + "rolld6"){
         randomdice6()
         var dice6_embed = new Discord.RichEmbed()
@@ -120,7 +124,7 @@ client.on("ready", () => {
         if(randdice6 == 6){
             message.channel.send({files: ["./images/d6.png"]});
         }
-        
+
 
 
 
@@ -149,32 +153,32 @@ function randomdice6(min, max) {
         message.reply("**ligma balls. ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 2){
-        message.reply("**tu savais que pour Halloween t'avais pas besoin de déguisement? ( ͡◉ ͜ʖ ͡◉)**")   
+        message.reply("**tu savais que pour Halloween t'avais pas besoin de déguisement? ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 3){
         message.reply("**t'es tellement pauvre que dans la rue, t'imites les pigeons pour que les gens te donne des miettes de pain. ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 4){
-        message.reply("**t'as pas peur de te faire agresser par des écureuils? Non parce que avec ta tête de gland, il faut faire attention... ( ͡◉ ͜ʖ ͡◉)**")  
+        message.reply("**t'as pas peur de te faire agresser par des écureuils? Non parce que avec ta tête de gland, il faut faire attention... ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 5){
-        message.reply("**t'es comme France 2, personne te regarde. ( ͡◉ ͜ʖ ͡◉)**")  
+        message.reply("**t'es comme France 2, personne te regarde. ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 6){
-        message.reply("**t'es la preuve vivante que Dieu à le sens de l'humour. ( ͡◉ ͜ʖ ͡◉)**")  
+        message.reply("**t'es la preuve vivante que Dieu à le sens de l'humour. ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 7){
-        message.reply("**c'est parce que t'as une tête de cul que tu dis toujours de la merde? ( ͡◉ ͜ʖ ͡◉)**")  
+        message.reply("**c'est parce que t'as une tête de cul que tu dis toujours de la merde? ( ͡◉ ͜ʖ ͡◉)**")
         }
     if(randroast == 8){
-        message.reply("**si les cons étaient fluorescents, t'éclairerais à toi tout seul le Soleil... ( ͡◉ ͜ʖ ͡◉)**")    
-        }  
+        message.reply("**si les cons étaient fluorescents, t'éclairerais à toi tout seul le Soleil... ( ͡◉ ͜ʖ ͡◉)**")
+        }
     if(randroast == 9){
-        message.reply("**ta voix ressemble à du laxatif. Quand tu parles tu me fait chier... ( ͡◉ ͜ʖ ͡◉)**")  
-        } 
+        message.reply("**ta voix ressemble à du laxatif. Quand tu parles tu me fait chier... ( ͡◉ ͜ʖ ͡◉)**")
+        }
     if(randroast == 10){
-        message.reply("**si je te parle pas, c'est pas que je suis timide! C'est juste que j'aime pas ta gueule... ( ͡◉ ͜ʖ ͡◉)**")  
-        }               
+        message.reply("**si je te parle pas, c'est pas que je suis timide! C'est juste que j'aime pas ta gueule... ( ͡◉ ͜ʖ ͡◉)**")
+        }
     }
     if (message.content.startsWith(prefix + "mute")) {
         if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR"))
@@ -191,8 +195,9 @@ function randomdice6(min, max) {
         message.channel.overwritePermissions(mute, { SEND_MESSAGES: false}).then(member => {
             message.channel.send(`**:mute: ${mute.user.username} à été mute par ${message.author.username}**`);
 
-        });  
+        });
     }
 });
+
 
 
